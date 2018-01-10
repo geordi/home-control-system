@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="395.34779"
-     inkscape:cy="49.781193"
+     inkscape:zoom="5.6"
+     inkscape:cx="318.62143"
+     inkscape:cy="52.472905"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -56,7 +56,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -105,7 +105,7 @@
     </g>
     <g
        id="g4584"
-       transform="translate(68.791665,-21.166667)">
+       transform="translate(68.791665,-14.552084)">
       <text
          id="text3696"
          y="52.26041"
@@ -136,49 +136,6 @@
          id="rect3742-3"
          style="opacity:1;fill:none;fill-opacity:1;stroke:#0d0000;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </g>
-    <g
-       id="g4676">
-      <text
-         id="text3696-3"
-         y="43.002079"
-         x="108.46246"
-         style="font-style:normal;font-weight:normal;font-size:2.11666656px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="stroke-width:0.26458332px"
-           y="43.002079"
-           x="108.46246"
-           id="tspan3694-6"
-           sodipodi:role="line">Arduino</tspan></text>
-      <text
-         id="text3700-7"
-         y="45.647148"
-         x="108.27008"
-         style="font-style:normal;font-weight:normal;font-size:2.11666656px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="stroke-width:0.26458332px"
-           y="45.647148"
-           x="108.27008"
-           id="tspan3698-5"
-           sodipodi:role="line">Running: remote_switches</tspan></text>
-      <rect
-         y="39.03125"
-         x="105.83334"
-         height="9.260417"
-         width="34.395824"
-         id="rect3742-3-5"
-         style="opacity:1;fill:none;fill-opacity:1;stroke:#0d0000;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:2.11666656px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="93.15213"
-       y="42.344917"
-       id="text4607"><tspan
-         sodipodi:role="line"
-         id="tspan4605"
-         x="93.15213"
-         y="42.344917"
-         style="stroke-width:0.26458332px">Serial</tspan></text>
     <g
        id="g4625">
       <text
@@ -213,25 +170,102 @@
          d="m 85.989582,33.739584 -1.322916,1.322917 1.322916,1.322917"
          style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 84.666666,41.677083 h 7.937501"
-       id="path4609-1"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 100.54167,41.677083 h 5.29166"
-       id="path4611-2"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 104.51042,40.354166 1.32291,1.322917 L 104.51042,43"
-       id="path4615-7"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 85.989582,40.354166 84.666666,41.677083 85.989582,43"
-       id="path4617-0"
-       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.11666656px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="107.93726"
+       y="35.065609"
+       id="text50"><tspan
+         sodipodi:role="line"
+         id="tspan48"
+         x="107.93726"
+         y="35.065609"
+         style="stroke-width:0.26458332px">2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.11666656px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="111.92321"
+       y="35.062988"
+       id="text54"><tspan
+         sodipodi:role="line"
+         id="tspan52"
+         x="111.92321"
+         y="35.062988"
+         style="stroke-width:0.26458332px">3</tspan></text>
+    <g
+       id="g97"
+       transform="translate(-3.3333251e-8,6.6145829)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4611-3"
+         d="m 108.47917,17.86458 v 7.9375"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4615-5"
+         d="m 109.80208,17.864586 -1.32291,1.32291 -1.32292,-1.32291"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       transform="translate(3.9687487,6.6145829)"
+       id="g97-2">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4611-3-9"
+         d="m 108.47917,17.86458 v 7.9375"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4615-5-1"
+         d="m 109.80208,17.864586 -1.32291,1.32291 -1.32292,-1.32291"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.11666656px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="103.1875"
+       y="20.510412"
+       id="text122"><tspan
+         sodipodi:role="line"
+         id="tspan120"
+         x="103.1875"
+         y="20.510412"
+         style="stroke-width:0.26458332px">RF receivers</tspan></text>
+    <g
+       transform="translate(14.552082,6.6145835)"
+       id="g97-2-2">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4611-3-9-7"
+         d="m 108.47917,17.86458 v 7.9375"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4615-5-1-0"
+         d="m 109.80208,17.864586 -1.32291,1.32291 -1.32292,-1.32291"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.11666656px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="122.2753"
+       y="35.15699"
+       id="text54-9"><tspan
+         sodipodi:role="line"
+         id="tspan52-3"
+         x="122.2753"
+         y="35.15699"
+         style="stroke-width:0.26458332px">4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.11666656px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="114.47954"
+       y="16.636156"
+       id="text122-6"><tspan
+         sodipodi:role="line"
+         id="tspan120-0"
+         x="114.47954"
+         y="16.636156"
+         style="stroke-width:0.26458332px">RF transmitter</tspan></text>
   </g>
 </svg>
