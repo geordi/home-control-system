@@ -1,0 +1,7 @@
+HOME_DIR = '/path/to/your/home'
+
+ARDUINO_IP = 'x.x.x.x'
+ARDUINO_PORT = 2222
+
+PI_IP = 'y.y.y.y'
+PI_PORT = 3333
