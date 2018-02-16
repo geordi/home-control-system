@@ -3,6 +3,7 @@
 
 struct TemperatureSenzorData {
   byte addr[8];
+  byte is_valid;
   float temperature_celsius;
 };
 
@@ -70,6 +71,8 @@ TemperatureSenzorData process_temperature_sensor() {
   byte addr[8];
   float celsius;
 
+  TemperatureSenzorData tsd;
+
   if ( !ds.search(addr)) {
 #ifdef DEBUG_TEMPERATURE
     Serial.println("No more addresses.");
@@ -77,7 +80,8 @@ TemperatureSenzorData process_temperature_sensor() {
 #endif
     ds.reset_search();
     delay(250);
-    return;
+    tsd.is_valid = 0;
+    return tsd;
   }
 
 #ifdef DEBUG_TEMPERATURE
@@ -92,7 +96,7 @@ TemperatureSenzorData process_temperature_sensor() {
 #ifdef DEBUG_TEMPERATURE
     Serial.println("CRC is not valid!");
 #endif
-    return;
+    return tsd;
   }
 
 #ifdef DEBUG_TEMPERATURE
@@ -123,7 +127,7 @@ TemperatureSenzorData process_temperature_sensor() {
 #ifdef DEBUG_TEMPERATURE
       Serial.println("Device is not a DS18x20 family device.");
 #endif
-      return;
+      return tsd;
   }
 
   ds.reset();
@@ -176,9 +180,8 @@ TemperatureSenzorData process_temperature_sensor() {
   Serial.println( celsius );
 #endif
 
-  TemperatureSenzorData tsd;
-
   tsd.temperature_celsius = celsius;
+  tsd.is_valid = 1;
   for ( i = 0; i < 8; i++ ) {
     tsd.addr[ i ] = addr[ i ];
   }
