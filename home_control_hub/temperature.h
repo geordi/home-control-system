@@ -3,7 +3,6 @@
 
 struct TemperatureSenzorData {
   byte addr[8];
-  byte is_valid;
   float temperature_celsius;
 };
 
@@ -80,7 +79,6 @@ TemperatureSenzorData process_temperature_sensor() {
 #endif
     ds.reset_search();
     delay(250);
-    tsd.is_valid = 0;
     return tsd;
   }
 
@@ -181,7 +179,6 @@ TemperatureSenzorData process_temperature_sensor() {
 #endif
 
   tsd.temperature_celsius = celsius;
-  tsd.is_valid = 1;
   for ( i = 0; i < 8; i++ ) {
     tsd.addr[ i ] = addr[ i ];
   }

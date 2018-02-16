@@ -58,8 +58,8 @@ U8GLIB_SSD1306_128X32 u8g(U8G_I2C_OPT_NONE);  // I2C / TWI
 #define TEMPERATURE_LEN 5
 
 #define nDEBUG_TEMPERATURE
-#define DEBUG_RF
-
+#define nDEBUG_RF
+#define DEBUG_ETHERNET
 
 RCSwitch rc_receiver = RCSwitch();
 
@@ -148,7 +148,7 @@ void setup()
 
 
 void process_rf_temp_humi(byte *data) {
-  Serial.println( "In process_rf_temp_humi" );
+  //Serial.println( "In process_rf_temp_humi" );
   // is data a ThermoHygro-device?
   if ((data[3] & 0x1f) == 0x1e) {
     // Yes!
@@ -377,7 +377,8 @@ void loop() {
   int packetSize = Udp.parsePacket();
   if ( packetSize ) {
     strcpy( packet_buffer, "" );
-    
+
+#ifdef DEBUG_ETHERNET
     Serial.print( "Received packet of size " );
     Serial.println( packetSize );
     //Serial.print( "From " );
@@ -390,12 +391,16 @@ void loop() {
     //}
     //Serial.print( ", port " );
     //Serial.println( Udp.remotePort() );
+#endif
 
     // read the packet into packetBufffer
     Udp.read( packet_buffer, UDP_TX_PACKET_MAX_SIZE );
+
+#ifdef DEBUG_ETHERNET
     Serial.println( "Contents:" );
     Serial.println( packet_buffer );
     Serial.println( "END Packet Debug Info" );
+#endif
 
     if ( !strncmp( packet_buffer, "version", 7 ) ) {
       Udp.beginPacket( Udp.remoteIP(), Udp.remotePort() );
@@ -411,31 +416,38 @@ void loop() {
     }
     else if ( !strncmp( packet_buffer, "temperature-meteostation", 24 ) ) {
       Udp.beginPacket( Udp.remoteIP(), Udp.remotePort() );
-      char s[ 80 ] = "Temp:meteostation:";
+      char s[ 30 ] = "Temp:meteostation:";
       // FIXME: Only if the temperature is set!
       //sprintf( s + 18, "%d:", last_outside_temperature_set );
       sprintf( s + 18, "%d:", computed_meteostation );
       //temp_to_str( last_outside_temperature, s + 20 );
       temp_to_str( meteostation_avg_temp, s + 20 );
+
+#ifdef DEBUG_ETHERNET
       Serial.print( "Will send UDP response: " );
       Serial.println( s );
+#endif
       Udp.write( s );
       Udp.endPacket();
     }
-    /*
     else if ( !strncmp( packet_buffer, "temperature", 11 ) ) {
       //cli();
       Udp.beginPacket( Udp.remoteIP(), Udp.remotePort() );
-      char s[ 80 ] = "Temp:";
+      char s[ 30 ] = "Temp:";
       sprintf( s+5, "%x%x%x%x%x%x%x%x:", tsd.addr[ 0 ], tsd.addr[ 1 ], tsd.addr[ 2 ], tsd.addr[ 3 ], tsd.addr[ 4 ], tsd.addr[ 5 ], tsd.addr[ 6 ], tsd.addr[ 7 ] );
       //temp_to_str( tsd.temperature_celsius, s + 16);
       temp_to_str( radiator_avg_temp, s + 16);
+
+#ifdef DEBUG_ETHERNET
       Serial.print( "Will send UDP response: " );
       Serial.println( s );
+#endif
+
       Udp.write( s );
       Udp.endPacket();
       //sei();
     }
+    /*
     else if ( !strncmp( packet_buffer, "text", 4 ) ) {
       //cli();
       //strcpy( b, packet_buffer+5 );
