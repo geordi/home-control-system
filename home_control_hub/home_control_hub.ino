@@ -433,10 +433,11 @@ void loop() {
     else if ( !strncmp( packet_buffer, "temperature", 11 ) ) {
       //cli();
       Udp.beginPacket( Udp.remoteIP(), Udp.remotePort() );
-      char s[ 30 ] = "Temp:";
-      sprintf( s+5, "%x%x%x%x%x%x%x%x:", tsd.addr[ 0 ], tsd.addr[ 1 ], tsd.addr[ 2 ], tsd.addr[ 3 ], tsd.addr[ 4 ], tsd.addr[ 5 ], tsd.addr[ 6 ], tsd.addr[ 7 ] );
+      char s[ 34 ] = "Temp:";
+      sprintf( s+5, "%02x%02x%02x%02x%02x%02x%02x%02x:", tsd.addr[ 0 ], tsd.addr[ 1 ], tsd.addr[ 2 ], tsd.addr[ 3 ], tsd.addr[ 4 ], tsd.addr[ 5 ], tsd.addr[ 6 ], tsd.addr[ 7 ] );
       //temp_to_str( tsd.temperature_celsius, s + 16);
-      temp_to_str( radiator_avg_temp, s + 16);
+      sprintf( s + 22, "%d:", computed_radiator );
+      temp_to_str( radiator_avg_temp, s + 24 );
 
 #ifdef DEBUG_ETHERNET
       Serial.print( "Will send UDP response: " );
