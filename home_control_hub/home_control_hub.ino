@@ -500,18 +500,22 @@ void loop() {
 
   loop_counter++;
 
+
   // broadcast info to LAN
-  /*
   if ( loop_counter % 10 == 0 ) {
     //Serial.print(".");
     loop_counter = 0;
 
     Udp.beginPacket(b_ip, b_port);
+
     Udp.write( display_line_1_buff );
     Udp.write( "\n" );
+    Udp.write( display_line_2_buff );
+    Udp.write( "\n" );
+
     Udp.endPacket();
   }
-  */
+
 
   // rebuild the picture after some delay
   delay(500);
