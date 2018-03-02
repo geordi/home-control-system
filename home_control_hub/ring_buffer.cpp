@@ -30,7 +30,7 @@ void ring_buffer_add( RingBuffer * self, float value ) {
 } // ring_buffer_add
 
 
-byte ring_buffer_last_index( RingBuffer * self ) {
+byte ring_buffer_last_index( const RingBuffer * self ) {
     byte last_idx = self->all_set ?  RB_CAPACITY : self->current;
     return last_idx;
 } // last_index
