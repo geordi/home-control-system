@@ -57,20 +57,24 @@ U8GLIB_SSD1306_128X32 u8g(U8G_I2C_OPT_NONE);  // I2C / TWI
 #define DISPLAY_LEN     20
 #define TEMPERATURE_LEN 5
 
+#define METEO_RECEIVE_PIN       2
+#define RC_RECEIVE_PIN          3
+#define RC_TRANSMIT_PIN         4
+#define DALLAS_TEMPERATURE_PIN  9
+
 #define nDEBUG_TEMPERATURE
 #define nDEBUG_RF
 #define DEBUG_ETHERNET
 
 RCSwitch rc_receiver = RCSwitch();
 
-OneWire  ds( 9 );  // on pin 9 (a 4.7K resistor is necessary)
+OneWire  ds( DALLAS_TEMPERATURE_PIN );  // on pin 9 (a 4.7K resistor is necessary)
 
 
 #include "temperature.h"
 
 
-// Intantiate a new ActionTransmitter remote, use pin 4
-ActionTransmitter actionTransmitter(4);
+ActionTransmitter actionTransmitter( RC_TRANSMIT_PIN );
 
 // Enter a MAC address and IP address for your controller below.
 // The IP address will be dependent on your local network:
@@ -121,10 +125,8 @@ void setup()
   Serial.begin(115200);
   pinMode( info_led_pin, OUTPUT );
 
-  //attachInterrupt( digitalPinToInterrupt( 2 ), int_handler, CHANGE );
-  
-  rc_receiver.enableReceive( digitalPinToInterrupt( 3 ) ); // Receiver on interrupt 1 => that is pin #3
-  SensorReceiver::init( digitalPinToInterrupt( 2 ), process_rf_temp_humi );  // Receiver on interrupt 0 => that is pin #2
+  rc_receiver.enableReceive( digitalPinToInterrupt( RC_RECEIVE_PIN ) ); // Receiver on interrupt 1 => that is pin #3
+  SensorReceiver::init( digitalPinToInterrupt( METEO_RECEIVE_PIN ), process_rf_temp_humi );  // Receiver on interrupt 0 => that is pin #2
 
   digitalWrite( rf_transmitter_vcc_pin, LOW );
 
