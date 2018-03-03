@@ -44,10 +44,6 @@ U8GLIB_SSD1306_128X32 u8g(U8G_I2C_OPT_NONE);  // I2C / TWI
 // http://milesburton.com/Dallas_Temperature_Control_Library
 
 
-// headers
-#define DATAGRAM_HEADER_IDX        0
-#define LIGHT_SWITCH_HEADER      0x1
-
 // defines
 #define LIGHT_SWITCH_DATAGRAM                0
 #define LIGHT_SWITCH_DATAGRAM_REPEATS_IDX    1
