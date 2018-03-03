@@ -17,7 +17,7 @@ typedef struct RingBuffer RingBuffer;
 RingBuffer * ring_buffer_new();
 
 void ring_buffer_add( RingBuffer * self, float value );
-float ring_buffer_average_value( RingBuffer * self, unsigned char * computed );
+float ring_buffer_average_value( RingBuffer * self, byte * computed );
 
 byte ring_buffer_last_index( const RingBuffer * self );
 void ring_buffer_print( const RingBuffer * self );

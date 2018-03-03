@@ -358,8 +358,8 @@ void loop() {
   /**/
 #endif
 
-  unsigned char computed_meteostation = 0;
-  unsigned char computed_radiator = 0;
+  byte computed_meteostation = 0;
+  byte computed_radiator = 0;
   
   float radiator_avg_temp = ring_buffer_average_value( rb_radiator_temperatures, &computed_radiator );
   float meteostation_avg_temp = ring_buffer_average_value( rb_meteostation_temperatures, &computed_meteostation );

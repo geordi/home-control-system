@@ -36,7 +36,7 @@ byte ring_buffer_last_index( const RingBuffer * self ) {
 } // last_index
 
 
-float ring_buffer_average_value( RingBuffer * self, unsigned char * computed ) {
+float ring_buffer_average_value( RingBuffer * self, byte * computed ) {
     unsigned char last_idx = ring_buffer_last_index( self );
     float sum = 0.0f;
     float average = 0.0f;
