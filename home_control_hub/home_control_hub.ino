@@ -333,30 +333,25 @@ void loop() {
   char display_line_1_buff[ DISPLAY_LEN ] = "Radiator: ";
 
   TemperatureSenzorData tsd = process_temperature_sensor();
-#ifdef DEBUG_TEMPERATURE
-  Serial.print( "Current radiator temperature: " );
-  Serial.println( tsd.temperature_celsius );
-#endif
-  ring_buffer_add( rb_radiator_temperatures, tsd.temperature_celsius );
-
-#ifdef DEBUG_TEMPERATURE
-  {
-    Serial.print( "RB Temperatures of radiator: " );
-    unsigned char last_idx = ring_buffer_last_index( rb_radiator_temperatures );
-
-    ring_buffer_print( rb_radiator_temperatures );
-
-    Serial.println();
-  }
-#endif
-
   byte computed_meteostation = 0;
   byte computed_radiator = 0;
   
   float radiator_avg_temp = ring_buffer_average_value( rb_radiator_temperatures, &computed_radiator );
   float meteostation_avg_temp = ring_buffer_average_value( rb_meteostation_temperatures, &computed_meteostation );
 
+  ring_buffer_add( rb_radiator_temperatures, tsd.temperature_celsius );
+
 #ifdef DEBUG_TEMPERATURE
+  Serial.print( "Current radiator temperature: " );
+  Serial.println( tsd.temperature_celsius );
+
+  Serial.print( "RB Temperatures of radiator: " );
+  unsigned char last_idx = ring_buffer_last_index( rb_radiator_temperatures );
+
+  ring_buffer_print( rb_radiator_temperatures );
+
+  Serial.println();
+
   Serial.print( "Average radiator temp: " );
   Serial.print( radiator_avg_temp );
   Serial.print( ", computed= " );
