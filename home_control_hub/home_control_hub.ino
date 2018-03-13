@@ -58,6 +58,9 @@ U8GLIB_SSD1306_128X32 u8g(U8G_I2C_OPT_NONE);  // I2C / TWI
 #define RC_TRANSMIT_PIN         4
 #define DALLAS_TEMPERATURE_PIN  9
 
+#define SENSOR_TEMPERATURE_METEOSTATION  1
+#define SENSOR_TEMPERATURE_RADIATOR      2
+
 #define nDEBUG_TEMPERATURE
 #define nDEBUG_RF
 #define DEBUG_ETHERNET
@@ -112,9 +115,6 @@ bool last_outside_temperature_set = false;
 RingBuffer *rb_meteostation_temperatures = ring_buffer_new();
 RingBuffer *rb_radiator_temperatures = ring_buffer_new();
 
-//void int_handler() {
-//  SensorReceiver::interruptHandler();
-//}
 
 void setup()
 {
@@ -284,6 +284,32 @@ void put_string_on_display( byte line_no, char *str ) {
 } // put_string_on_display
 
 
+// TODO: Add check for str_len in idx
+void generate_temperature_udp_response( char * str, const int str_len, const byte * sensor_addr, const int temperature_sensor, const float temperature, const byte avg_computed ) {
+  int idx = 0;
+
+  if ( temperature_sensor == SENSOR_TEMPERATURE_METEOSTATION ) {
+    sprintf( str, "Temp:meteostation:" );
+    idx += 18;
+  }
+  else {
+    sprintf( str, "Temp:" );
+    idx += 5;
+
+    for ( byte i = 0; i < 8; i++ ) {
+      sprintf( str + idx, "%02x", sensor_addr[ i ] );
+      idx += 2;
+    }
+    sprintf( str + idx, ":" );
+    idx += 1;
+
+  }
+  sprintf( str + idx, "%d:", avg_computed );
+  idx += 2;
+  temp_to_str( temperature, str + idx );
+}
+
+
 void loop() {
 
   /**/
@@ -414,12 +440,9 @@ void loop() {
     }
     else if ( !strncmp( packet_buffer, "temperature-meteostation", 24 ) ) {
       Udp.beginPacket( Udp.remoteIP(), Udp.remotePort() );
-      char s[ 30 ] = "Temp:meteostation:";
-      // FIXME: Only if the temperature is set!
-      //sprintf( s + 18, "%d:", last_outside_temperature_set );
-      sprintf( s + 18, "%d:", computed_meteostation );
-      //temp_to_str( last_outside_temperature, s + 20 );
-      temp_to_str( meteostation_avg_temp, s + 20 );
+      char s[ 30 ];
+
+      generate_temperature_udp_response( s, 30, NULL, SENSOR_TEMPERATURE_METEOSTATION, meteostation_avg_temp, computed_meteostation );
 
 #ifdef DEBUG_ETHERNET
       Serial.print( "Will send UDP response: " );
@@ -431,11 +454,9 @@ void loop() {
     else if ( !strncmp( packet_buffer, "temperature", 11 ) ) {
       //cli();
       Udp.beginPacket( Udp.remoteIP(), Udp.remotePort() );
-      char s[ 34 ] = "Temp:";
-      sprintf( s+5, "%02x%02x%02x%02x%02x%02x%02x%02x:", tsd.addr[ 0 ], tsd.addr[ 1 ], tsd.addr[ 2 ], tsd.addr[ 3 ], tsd.addr[ 4 ], tsd.addr[ 5 ], tsd.addr[ 6 ], tsd.addr[ 7 ] );
-      //temp_to_str( tsd.temperature_celsius, s + 16);
-      sprintf( s + 22, "%d:", computed_radiator );
-      temp_to_str( radiator_avg_temp, s + 24 );
+      char s[ 34 ];
+
+      generate_temperature_udp_response( s, 34, tsd.addr, SENSOR_TEMPERATURE_RADIATOR, radiator_avg_temp, computed_radiator );
 
 #ifdef DEBUG_ETHERNET
       Serial.print( "Will send UDP response: " );
