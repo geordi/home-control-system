@@ -6,7 +6,7 @@ RingBuffer * ring_buffer_new( ) {
   rb = (RingBuffer*)malloc( sizeof( rb[ 0 ] ) );
   
   //rb->rb = (float*)malloc( RB_CAPACITY * sizeof( rb->rb[ 0 ] ) );
-  for ( unsigned char i = 0; i < RB_CAPACITY; i++ ) {
+  for ( byte i = 0; i < RB_CAPACITY; i++ ) {
     rb->rb[ i ] = 0.0f;
   }
 
@@ -37,12 +37,12 @@ byte ring_buffer_last_index( const RingBuffer * self ) {
 
 
 float ring_buffer_average_value( RingBuffer * self, byte * computed ) {
-    unsigned char last_idx = ring_buffer_last_index( self );
+    byte last_idx = ring_buffer_last_index( self );
     float sum = 0.0f;
     float average = 0.0f;
 
     if ( last_idx > 0 ) {
-        for ( unsigned char i = 0; i < last_idx; i++ ) {
+        for ( byte i = 0; i < last_idx; i++ ) {
             float temp = self->rb[ i ];
             sum += temp;
         }
@@ -65,7 +65,7 @@ void ring_buffer_print( const RingBuffer * self ) {
     Serial.print( last_idx );
     Serial.print( " ] " );
 
-    for ( unsigned char i = 0; i < last_idx; i++ ) {
+    for ( byte i = 0; i < last_idx; i++ ) {
         float temp = self->rb[ i ];
         Serial.print( temp );
         Serial.print( " " );

@@ -8,8 +8,8 @@
 
 struct RingBuffer {
   float rb[ RB_CAPACITY ];
-  unsigned char current;
-  unsigned char all_set;
+  byte current;
+  byte all_set;
 };
 
 typedef struct RingBuffer RingBuffer;
