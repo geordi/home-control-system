@@ -296,18 +296,15 @@ void generate_temperature_udp_response( char * str, const int str_len, const byt
 
 void loop() {
 
-  /**/
   // receiving from 433 module
   if (rc_receiver.available()) {
-
-      //Serial.print( "Calling SensorReceiver interruptHandler..." );
-      //SensorReceiver::interruptHandler();
 
     int value = rc_receiver.getReceivedValue();
 
     if (value == 0) {
 
-    } else {
+    }
+    else {
 #ifdef DEBUG_RF
       Serial.print("RF:");
       Serial.println( rc_receiver.getReceivedValue() );
@@ -324,17 +321,14 @@ void loop() {
       Serial.print("UDP:");
       Serial.println( s );
 #endif
-}
+    }
 
     rc_receiver.resetAvailable();
   }
-  /**/
 
-  /*
-  if (Serial.available()) {
+  /*if (Serial.available()) {
     process_incomming_serial_communication();
-  }
-  */
+  }*/
 
   char display_line_1_buff[ DISPLAY_LEN ] = "Radiator: ";
 
@@ -349,23 +343,11 @@ void loop() {
   {
     Serial.print( "RB Temperatures of radiator: " );
     unsigned char last_idx = ring_buffer_last_index( rb_radiator_temperatures );
-    //Serial.print( "Last index= " );
-    //Serial.print( last_idx );
-    //Serial.print( " Capacity= " );
-    //Serial.print( RB_CAPACITY );
-    //Serial.print( " Current= " );
-    //Serial.print( rb_radiator_temperatures->current );
 
     ring_buffer_print( rb_radiator_temperatures );
-    //for ( int i = 0; i < last_idx; i++ ) {
-    //    float temp = rb_radiator_temperatures->rb[ i ];
-    //    Serial.print( temp );
-    //    Serial.print( " " );
-    //}
 
     Serial.println();
   }
-  /**/
 #endif
 
   byte computed_meteostation = 0;
