@@ -291,7 +291,7 @@ void generate_temperature_udp_response( char * str, const int str_len, const byt
   sprintf( str + idx, "%d:", avg_computed );
   idx += 2;
   temp_to_str( temperature, str + idx );
-}
+} // generate_temperature_udp_response
 
 
 void loop() {
