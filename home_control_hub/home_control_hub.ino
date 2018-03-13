@@ -258,22 +258,6 @@ void handle_ethernet_rf_packet( char *datagram ) {
 
   int repeats = atoi( repeats_str );
 
-  /*
-  Serial.print( "socket= " );
-  Serial.print( socket_id );
-  Serial.print( " repeats= " );
-  Serial.print( repeats );
-  Serial.print( " ( " );
-  Serial.print( repeats_str );
-  Serial.print( " )");
-  Serial.print( " switch_on= " );
-  Serial.print( switch_on );
-
-  Serial.print( " ( " );
-  Serial.print( datagram[ 8 ] );
-  Serial.println( " )");
-  */
-
   send_rf_socket_signal( &socket_id, repeats, switch_on );
 } // handle_ethernet_rf_packet
 
