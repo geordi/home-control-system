@@ -69,6 +69,9 @@ U8GLIB_SSD1306_128X32 u8g(U8G_I2C_OPT_NONE);  // I2C / TWI
 
 
 #ifdef USE_MQTT
+// MQTT on Arduino:
+// https://www.hivemq.com/blog/mqtt-client-library-encyclopedia-arduino-pubsubclient/
+
 #include <PubSubClient.h>
 
 const char* mqtt_server = "broker.example.com";
