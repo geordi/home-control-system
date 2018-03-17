@@ -65,6 +65,18 @@ U8GLIB_SSD1306_128X32 u8g(U8G_I2C_OPT_NONE);  // I2C / TWI
 #define nDEBUG_RF
 #define DEBUG_ETHERNET
 
+#define nUSE_MQTT
+
+
+#ifdef USE_MQTT
+#include <PubSubClient.h>
+
+const char* mqtt_server = "broker.example.com";
+
+EthernetClient eth_client;
+PubSubClient pub_sub_client;
+#endif
+
 RCSwitch rc_receiver = RCSwitch();
 
 OneWire  ds( DALLAS_TEMPERATURE_PIN );  // on pin 9 (a 4.7K resistor is necessary)
@@ -142,6 +154,11 @@ void setup()
 
   Ethernet.begin( mac, ip );
   Udp.begin( local_port );
+
+#ifdef USE_MQTT
+  pub_sub_client.setClient( eth_client );
+  pub_sub_client.setServer( mqtt_server, 1883 );
+#endif
 } // setup
 
 
