@@ -14,7 +14,8 @@ struct RingBuffer {
 
 typedef struct RingBuffer RingBuffer;
 
-RingBuffer * ring_buffer_new();
+// Saving some memory by disabling dynamic allocation
+// RingBuffer * ring_buffer_new();
 
 void ring_buffer_add( RingBuffer * self, float value );
 float ring_buffer_average_value( RingBuffer * self, byte * computed );

@@ -112,8 +112,8 @@ char display_text_received[ DISPLAY_LEN ] = "";
 float last_outside_temperature = 0.0;
 bool last_outside_temperature_set = false;
 
-RingBuffer *rb_meteostation_temperatures = ring_buffer_new();
-RingBuffer *rb_radiator_temperatures = ring_buffer_new();
+RingBuffer rb_meteostation_temperatures;
+RingBuffer rb_radiator_temperatures;
 
 
 void setup()
@@ -171,7 +171,7 @@ void process_rf_temp_humi(byte *data) {
     last_outside_temperature_set = true;
 
     float actual_temp = temp / 10.0f;
-    ring_buffer_add( rb_meteostation_temperatures, actual_temp );
+    ring_buffer_add( &rb_meteostation_temperatures, actual_temp );
 
     //Serial.print( "RB Temperatures of meteostation: " );
     //ring_buffer_print( rb_meteostation_temperatures );
@@ -336,10 +336,10 @@ void loop() {
   byte computed_meteostation = 0;
   byte computed_radiator = 0;
   
-  float radiator_avg_temp = ring_buffer_average_value( rb_radiator_temperatures, &computed_radiator );
-  float meteostation_avg_temp = ring_buffer_average_value( rb_meteostation_temperatures, &computed_meteostation );
+  float radiator_avg_temp = ring_buffer_average_value( &rb_radiator_temperatures, &computed_radiator );
+  float meteostation_avg_temp = ring_buffer_average_value( &rb_meteostation_temperatures, &computed_meteostation );
 
-  ring_buffer_add( rb_radiator_temperatures, tsd.temperature_celsius );
+  ring_buffer_add( &rb_radiator_temperatures, tsd.temperature_celsius );
 
 #ifdef DEBUG_TEMPERATURE
   Serial.print( "Current radiator temperature: " );
@@ -458,13 +458,13 @@ void loop() {
   }
 
 
-  if ( ring_buffer_last_index( rb_radiator_temperatures ) > 0 ) {
+  if ( ring_buffer_last_index( &rb_radiator_temperatures ) > 0 ) {
     temp_to_str( radiator_avg_temp, display_line_1_buff );
   }
   else {
     temp_to_str( 0.0f, display_line_1_buff );
   }
-  if ( ring_buffer_last_index( rb_meteostation_temperatures ) > 0 ) {
+  if ( ring_buffer_last_index( &rb_meteostation_temperatures ) > 0 ) {
     temp_to_str( meteostation_avg_temp, display_line_2_buff );
   }
   else {

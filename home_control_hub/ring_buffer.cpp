@@ -1,5 +1,6 @@
 #include "ring_buffer.h"
 
+/*
 RingBuffer * ring_buffer_new( ) {
   RingBuffer * rb = NULL;
 
@@ -16,6 +17,7 @@ RingBuffer * ring_buffer_new( ) {
 
   return rb;
 } // ring_buffer_new
+*/
 
 
 void ring_buffer_add( RingBuffer * self, float value ) {
