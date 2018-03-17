@@ -153,6 +153,8 @@ void setup()
   }
 
   Ethernet.begin( mac, ip );
+  // Ethernet startup delay
+  delay( 1500 );
   Udp.begin( local_port );
 
 #ifdef USE_MQTT
