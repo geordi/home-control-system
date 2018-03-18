@@ -23,6 +23,9 @@
 #include "U8glib.h"
 U8GLIB_SSD1306_128X32 u8g(U8G_I2C_OPT_NONE);  // I2C / TWI
 
+// for u8g2lib
+// U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE, /* clock=*/ 16, /* data=*/ 17);   // ESP32 Thing, HW I2C with pin remapping
+
 #include <OneWire.h> // for Dallas temperature sensor
 
 #include <RemoteTransmitter.h>  // ActionTransmitter to control socket plugs
