@@ -141,6 +141,8 @@ void setup()
 
   digitalWrite( rf_transmitter_vcc_pin, LOW );
 
+  u8g.begin();
+
   // assign default color value
   if ( u8g.getMode() == U8G_MODE_R3G3B2 ) {
     u8g.setColorIndex(255);     // white
